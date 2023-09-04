@@ -2,7 +2,7 @@ package io.github.hizhangbo.autoconfigure;
 
 import io.github.hizhangbo.manager.RedisManager;
 import io.github.hizhangbo.manager.RedisTemplateWrapper;
-import jakarta.annotation.PostConstruct;
+import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,0 +1,49 @@
+redis:
+  list:
+    # ---  redis1  --- #
+    - host: 127.0.0.1
+      port: 6379
+      name: redis1
+      index: 1
+      password: 123456
+      databases:
+        - 0
+        - 1
+      lettuce:
+        pool:
+          max-active: 8
+          max-idle: 4
+          max-wait: -1ms
+          min-idle: 1
+
+    # ---  redis2  --- #
+    - host: 127.0.0.1
+      port: 16379
+      name: redis2
+      index: 2
+      password: Zb123456
+      databases:
+        - 0
+        - 1
+      lettuce:
+        pool:
+          max-active: 8
+          max-idle: 4
+          max-wait: -1ms
+          min-idle: 1
+
+    # ---  redis3  --- #
+    - host: 127.0.0.1
+      port: 6379
+      name: redis3
+      index: 3
+      password: 123456
+      databases:
+        - 0
+        - 1
+      lettuce:
+        pool:
+          max-active: 8
+          max-idle: 4
+          max-wait: -1ms
+          min-idle: 1

@@ -5,13 +5,11 @@ import io.github.hizhangbo.manager.RedisTemplateWrapper;
 import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.util.CollectionUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Configuration(proxyBeanMethods = false)
 public class MultipleRedisContainer {
 
     private final MultipleRedisConfiguration multipleRedisConfiguration;

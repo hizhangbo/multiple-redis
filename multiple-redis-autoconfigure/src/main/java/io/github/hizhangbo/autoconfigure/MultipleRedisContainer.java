@@ -3,7 +3,6 @@ package io.github.hizhangbo.autoconfigure;
 import io.github.hizhangbo.manager.RedisManager;
 import io.github.hizhangbo.manager.RedisTemplateWrapper;
 import jakarta.annotation.PostConstruct;
-import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.util.CollectionUtils;
@@ -15,14 +14,11 @@ import java.util.List;
 public class MultipleRedisContainer {
 
     private final MultipleRedisConfiguration multipleRedisConfiguration;
-    private final ConfigurableBeanFactory beanFactory;
 
     private final List<RedisTemplateWrapper> redisTemplateWrapperList = new ArrayList<>();
 
-    public MultipleRedisContainer(MultipleRedisConfiguration multipleRedisConfiguration,
-                                  ConfigurableBeanFactory beanFactory) {
+    public MultipleRedisContainer(MultipleRedisConfiguration multipleRedisConfiguration) {
         this.multipleRedisConfiguration = multipleRedisConfiguration;
-        this.beanFactory = beanFactory;
     }
 
     @PostConstruct
@@ -36,9 +32,6 @@ public class MultipleRedisContainer {
             for (Integer database : redisProperties.getDatabases()) {
                 RedisTemplateWrapper redisTemplateWrapper = new RedisTemplateWrapper(redisProperties, database);
                 redisTemplateWrapperList.add(redisTemplateWrapper);
-
-                String beanNameRedisTemplate = redisProperties.getName() + "RedisTemplate" + database;
-                beanFactory.registerSingleton(beanNameRedisTemplate, redisTemplateWrapper.getRedisTemplate());
             }
         }
     }
